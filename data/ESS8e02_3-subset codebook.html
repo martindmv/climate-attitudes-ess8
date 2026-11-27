@@ -1,0 +1,4854 @@
+
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        html {
+            max-width: 70ch;
+            /* larger spacing on larger screens, very small spacing on tiny screens */
+            padding: calc(1vmin + .5rem);
+            /* shorthand for margin-left/margin-right */
+            margin-inline: auto;
+            /* fluid sizing: https://frontaid.io/blog/fluid-typography-2d-css-locks-clamp/ */
+            font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
+            /* use system font stack: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family */
+            font-family: system-ui;
+            --font-size-x-small: 0.8rem;
+            --font-size-small: 1rem;
+            --font-size-medium: 1.3rem;
+            --font-size-large: 1.65rem;
+            --font-size-x-large: 2.4rem;
+            --space-xx-small: 0.25rem;
+            --space-x-small: 0.5rem;
+            --space-small: 1rem;
+            --space-medium: 1.5rem;
+            --space-large: 3rem;
+            --space-x-large: 4rem;
+            --space-xx-large: 6rem;
+            --space-xxx-large: 8rem;
+            --divider-line: 1px dashed var(--color-light-gray);
+            --outline-width: 3px;
+        }
+
+        /* increase line-height for everything except headings */
+        body :not(:is(h1, h2, h3, h4, h5, h6)) {
+            line-height: 1.75;
+        }
+
+        /*
+        .var-header {
+            position: sticky;
+            top: 10px;
+        } */
+        .variable-meta-string {
+            margin-top: var(--space-small);
+            margin-bottom: 0;
+            font-size: var(--font-size-x-small);
+        }
+
+        .data-table {
+            margin-left: 0;
+            margin-bottom: 0;
+            margin-top: var(--space-small);
+            margin-left: var(--space-small);
+            font-size: var(--font-size-x-small);
+            display: block;
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .data-table table {
+            border-collapse: collapse;
+            font-size: var(--font-size-x-small);
+        }
+
+        .data-table thead {
+            border-bottom: 2px solid var(--color-black);
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        .data-table th {
+            padding-bottom: var(--space-x-small);
+            padding-right: var(--space-small);
+            padding-bottom: var(--space-xx-small);
+            padding-top: var(--space-xx-small);
+            text-align: left;
+        }
+
+    </style>
+    <title>Codebook</title>
+</head>
+
+<body>
+    <h1>Codebook</h1>
+    <h2>Datafile</h2>
+        
+<h3>ESS8 - integrated file, edition 2.3</h3>
+<p><a href="https://doi.org/10.21338/ess8e02_3" target="_blank">doi:10.21338/ess8e02_3</a></p>
+    <h2>Variables</h2>
+<ul class="toc-list">
+    <li>
+        <a href="#name">
+            <span>name</span>
+            <span> - Title of dataset</span>
+        </a>
+    </li>
+    <li>
+        <a href="#essround">
+            <span>essround</span>
+            <span> - ESS round</span>
+        </a>
+    </li>
+    <li>
+        <a href="#edition">
+            <span>edition</span>
+            <span> - Edition</span>
+        </a>
+    </li>
+    <li>
+        <a href="#proddate">
+            <span>proddate</span>
+            <span> - Production date</span>
+        </a>
+    </li>
+    <li>
+        <a href="#idno">
+            <span>idno</span>
+            <span> - Respondent's identification number</span>
+        </a>
+    </li>
+    <li>
+        <a href="#cntry">
+            <span>cntry</span>
+            <span> - Country</span>
+        </a>
+    </li>
+    <li>
+        <a href="#dweight">
+            <span>dweight</span>
+            <span> - Design weight</span>
+        </a>
+    </li>
+    <li>
+        <a href="#pspwght">
+            <span>pspwght</span>
+            <span> - Post-stratification weight including design weight</span>
+        </a>
+    </li>
+    <li>
+        <a href="#pweight">
+            <span>pweight</span>
+            <span> - Population size weight (must be combined with dweight or pspwght)</span>
+        </a>
+    </li>
+    <li>
+        <a href="#anweight">
+            <span>anweight</span>
+            <span> - Analysis weight</span>
+        </a>
+    </li>
+    <li>
+        <a href="#polintr">
+            <span>polintr</span>
+            <span> - How interested in politics</span>
+        </a>
+    </li>
+    <li>
+        <a href="#trstplt">
+            <span>trstplt</span>
+            <span> - Trust in politicians</span>
+        </a>
+    </li>
+    <li>
+        <a href="#trstprl">
+            <span>trstprl</span>
+            <span> - Trust in country's parliament</span>
+        </a>
+    </li>
+    <li>
+        <a href="#sgnptit">
+            <span>sgnptit</span>
+            <span> - Signed petition last 12 months</span>
+        </a>
+    </li>
+    <li>
+        <a href="#pbldmn">
+            <span>pbldmn</span>
+            <span> - Taken part in lawful public demonstration last 12 months</span>
+        </a>
+    </li>
+    <li>
+        <a href="#bctprd">
+            <span>bctprd</span>
+            <span> - Boycotted certain products last 12 months</span>
+        </a>
+    </li>
+    <li>
+        <a href="#lrscale">
+            <span>lrscale</span>
+            <span> - Placement on left right scale</span>
+        </a>
+    </li>
+    <li>
+        <a href="#eneffap">
+            <span>eneffap</span>
+            <span> - How likely to buy most energy efficient home appliance</span>
+        </a>
+    </li>
+    <li>
+        <a href="#rdcenr">
+            <span>rdcenr</span>
+            <span> - How often do things to reduce energy use</span>
+        </a>
+    </li>
+    <li>
+        <a href="#cflsenr">
+            <span>cflsenr</span>
+            <span> - How confident you could use less energy than now</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elgcoal">
+            <span>elgcoal</span>
+            <span> - How much electricity in [country] should be generated from coal</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elgngas">
+            <span>elgngas</span>
+            <span> - How much electricity in [country] should be generated from natural gas</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elghydr">
+            <span>elghydr</span>
+            <span> - How much electricity in [country] should be generated from hydroelectric power</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elgnuc">
+            <span>elgnuc</span>
+            <span> - How much electricity in [country] should be generated from nuclear power</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elgsun">
+            <span>elgsun</span>
+            <span> - How much electricity in [country] should be generated from solar power</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elgwind">
+            <span>elgwind</span>
+            <span> - How much electricity in [country] should be generated from wind power</span>
+        </a>
+    </li>
+    <li>
+        <a href="#elgbio">
+            <span>elgbio</span>
+            <span> - How much electricity in [country] should be generated from biomass energy</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrpwrct">
+            <span>wrpwrct</span>
+            <span> - How worried, power cuts</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrenexp">
+            <span>wrenexp</span>
+            <span> - How worried, energy too expensive for many people</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrdpimp">
+            <span>wrdpimp</span>
+            <span> - How worried, [country] too dependent on energy imports</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrdpfos">
+            <span>wrdpfos</span>
+            <span> - How worried, [country] too dependent on fossil fuels</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrntdis">
+            <span>wrntdis</span>
+            <span> - How worried, energy supply interrupted by natural disasters or extreme weather</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrinspw">
+            <span>wrinspw</span>
+            <span> - How worried, energy supply interrupted by insufficient power generated</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrtcfl">
+            <span>wrtcfl</span>
+            <span> - How worried, energy supply interrupted by technical failures</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrtratc">
+            <span>wrtratc</span>
+            <span> - How worried, energy supply interrupted by terrorist attacks</span>
+        </a>
+    </li>
+    <li>
+        <a href="#clmchng">
+            <span>clmchng</span>
+            <span> - Do you think world's climate is changing</span>
+        </a>
+    </li>
+    <li>
+        <a href="#clmthgt1">
+            <span>clmthgt1</span>
+            <span> - How much thought about climate change before today</span>
+        </a>
+    </li>
+    <li>
+        <a href="#clmthgt2">
+            <span>clmthgt2</span>
+            <span> - How much thought about climate change before today</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ccnthum">
+            <span>ccnthum</span>
+            <span> - Climate change caused by natural processes, human activity, or both</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ccrdprs">
+            <span>ccrdprs</span>
+            <span> - To what extent feel personal responsibility to reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#wrclmch">
+            <span>wrclmch</span>
+            <span> - How worried about climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ccgdbd">
+            <span>ccgdbd</span>
+            <span> - Climate change good or bad impact across world</span>
+        </a>
+    </li>
+    <li>
+        <a href="#lkredcc">
+            <span>lkredcc</span>
+            <span> - Imagine large numbers of people limit energy use, how likely reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#lklmten">
+            <span>lklmten</span>
+            <span> - How likely, large numbers of people limit energy use</span>
+        </a>
+    </li>
+    <li>
+        <a href="#gvsrdcc">
+            <span>gvsrdcc</span>
+            <span> - How likely, governments in enough countries take action to reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ownrdcc">
+            <span>ownrdcc</span>
+            <span> - How likely, limiting own energy use reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#inctxff">
+            <span>inctxff</span>
+            <span> - Favour increase taxes on fossil fuels to reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#sbsrnen">
+            <span>sbsrnen</span>
+            <span> - Favour subsidise renewable energy to reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#banhhap">
+            <span>banhhap</span>
+            <span> - Favour ban sale of least energy efficient household appliances to reduce climate change</span>
+        </a>
+    </li>
+    <li>
+        <a href="#gndr">
+            <span>gndr</span>
+            <span> - Gender</span>
+        </a>
+    </li>
+    <li>
+        <a href="#agea">
+            <span>agea</span>
+            <span> - Age of respondent, calculated</span>
+        </a>
+    </li>
+    <li>
+        <a href="#domicil">
+            <span>domicil</span>
+            <span> - Domicile, respondent's description</span>
+        </a>
+    </li>
+    <li>
+        <a href="#eisced">
+            <span>eisced</span>
+            <span> - Highest level of education, ES - ISCED</span>
+        </a>
+    </li>
+    <li>
+        <a href="#eduyrs">
+            <span>eduyrs</span>
+            <span> - Years of full-time education completed</span>
+        </a>
+    </li>
+    <li>
+        <a href="#mnactic">
+            <span>mnactic</span>
+            <span> - Main activity, last 7 days. All respondents. Post coded</span>
+        </a>
+    </li>
+    <li>
+        <a href="#hincfel">
+            <span>hincfel</span>
+            <span> - Feeling about household's income nowadays</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipcrtiv">
+            <span>ipcrtiv</span>
+            <span> - Important to think new ideas and being creative</span>
+        </a>
+    </li>
+    <li>
+        <a href="#imprich">
+            <span>imprich</span>
+            <span> - Important to be rich, have money and expensive things</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipeqopt">
+            <span>ipeqopt</span>
+            <span> - Important that people are treated equally and have equal opportunities</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipshabt">
+            <span>ipshabt</span>
+            <span> - Important to show abilities and be admired</span>
+        </a>
+    </li>
+    <li>
+        <a href="#impsafe">
+            <span>impsafe</span>
+            <span> - Important to live in secure and safe surroundings</span>
+        </a>
+    </li>
+    <li>
+        <a href="#impdiff">
+            <span>impdiff</span>
+            <span> - Important to try new and different things in life</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipfrule">
+            <span>ipfrule</span>
+            <span> - Important to do what is told and follow rules</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipudrst">
+            <span>ipudrst</span>
+            <span> - Important to understand different people</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipmodst">
+            <span>ipmodst</span>
+            <span> - Important to be humble and modest, not draw attention</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipgdtim">
+            <span>ipgdtim</span>
+            <span> - Important to have a good time</span>
+        </a>
+    </li>
+    <li>
+        <a href="#impfree">
+            <span>impfree</span>
+            <span> - Important to make own decisions and be free</span>
+        </a>
+    </li>
+    <li>
+        <a href="#iphlppl">
+            <span>iphlppl</span>
+            <span> - Important to help people and care for others well-being</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipsuces">
+            <span>ipsuces</span>
+            <span> - Important to be successful and that people recognize achievements</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipstrgv">
+            <span>ipstrgv</span>
+            <span> - Important that government is strong and ensures safety</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipadvnt">
+            <span>ipadvnt</span>
+            <span> - Important to seek adventures and have an exciting life</span>
+        </a>
+    </li>
+    <li>
+        <a href="#ipbhprp">
+            <span>ipbhprp</span>
+            <span> - Important to behave properly</span>
+        </a>
+    </li>
+    <li>
+        <a href="#iprspot">
+            <span>iprspot</span>
+            <span> - Important to get respect from others</span>
+        </a>
+    </li>
+    <li>
+        <a href="#iplylfr">
+            <span>iplylfr</span>
+            <span> - Important to be loyal to friends and devote to people close</span>
+        </a>
+    </li>
+    <li>
+        <a href="#impenv">
+            <span>impenv</span>
+            <span> - Important to care for nature and environment</span>
+        </a>
+    </li>
+    <li>
+        <a href="#imptrad">
+            <span>imptrad</span>
+            <span> - Important to follow traditions and customs</span>
+        </a>
+    </li>
+    <li>
+        <a href="#impfun">
+            <span>impfun</span>
+            <span> - Important to seek fun and things that give pleasure</span>
+        </a>
+    </li>
+</ul>
+    
+<div>
+    <h3 id="name">name </h3>
+        <div>Title of dataset</div>
+        <div class="variable-meta-string"> Location in questionnaire: 1</div>
+</div>
+    
+<div>
+    <h3 id="essround">essround </h3>
+        <div>ESS round</div>
+        <div class="variable-meta-string"> Location in questionnaire: 2</div>
+</div>
+    
+<div>
+    <h3 id="edition">edition </h3>
+        <div>Edition</div>
+        <div class="variable-meta-string"> Location in questionnaire: 3</div>
+</div>
+    
+<div>
+    <h3 id="proddate">proddate </h3>
+        <div>Production date</div>
+        <div class="variable-meta-string"> Location in questionnaire: 4</div>
+</div>
+    
+<div>
+    <h3 id="idno">idno </h3>
+        <div>Respondent's identification number</div>
+        <div class="variable-meta-string"> Location in questionnaire: 6</div>
+</div>
+    
+<div>
+    <h3 id="cntry">cntry </h3>
+        <div>Country</div>
+        <div class="variable-meta-string"> Location in questionnaire: 5</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">AL</td>
+                        <td>Albania</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">AT</td>
+                        <td>Austria</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">BE</td>
+                        <td>Belgium</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">BG</td>
+                        <td>Bulgaria</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">CH</td>
+                        <td>Switzerland</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">CY</td>
+                        <td>Cyprus</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">CZ</td>
+                        <td>Czechia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">DE</td>
+                        <td>Germany</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">DK</td>
+                        <td>Denmark</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">EE</td>
+                        <td>Estonia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">ES</td>
+                        <td>Spain</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">FI</td>
+                        <td>Finland</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">FR</td>
+                        <td>France</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">GB</td>
+                        <td>United Kingdom</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">GE</td>
+                        <td>Georgia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">GR</td>
+                        <td>Greece</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">HR</td>
+                        <td>Croatia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">HU</td>
+                        <td>Hungary</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">IE</td>
+                        <td>Ireland</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">IS</td>
+                        <td>Iceland</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">IL</td>
+                        <td>Israel</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">IT</td>
+                        <td>Italy</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">LT</td>
+                        <td>Lithuania</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">LU</td>
+                        <td>Luxembourg</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">LV</td>
+                        <td>Latvia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">ME</td>
+                        <td>Montenegro</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">MK</td>
+                        <td>North Macedonia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">NL</td>
+                        <td>Netherlands</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">NO</td>
+                        <td>Norway</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">PL</td>
+                        <td>Poland</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">PT</td>
+                        <td>Portugal</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">RO</td>
+                        <td>Romania</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">RS</td>
+                        <td>Serbia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">RU</td>
+                        <td>Russian Federation</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">SE</td>
+                        <td>Sweden</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">SI</td>
+                        <td>Slovenia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">SK</td>
+                        <td>Slovakia</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">TR</td>
+                        <td>Turkey</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">UA</td>
+                        <td>Ukraine</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">XK</td>
+                        <td>Kosovo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+    
+<div>
+    <h3 id="dweight">dweight </h3>
+        <div>Design weight</div>
+        <div class="variable-meta-string"> Location in questionnaire: R17</div>
+        <div class="variable-meta-string"> Note: For advanced users who may want to model a nonresponse correction themselves we provide a design weight (dweight). This weight corrects only for differential selection probabilities. Please note that we do not recommend use of this weight without non-response correction. For more information, please see the document "Weighting ESS data (User guide).</div>
+</div>
+    
+<div>
+    <h3 id="pspwght">pspwght </h3>
+        <div>Post-stratification weight including design weight</div>
+        <div class="variable-meta-string"> Location in questionnaire: R18</div>
+        <div class="variable-meta-string"> Note: We also provide the post-stratified design weight (without the population size correction), pspwght. This weight can be used for single country analysis or for cross-country comparisons and for these types of analyses should give you the same estimates as anweight. For more information, please see the document "Weighting ESS data (User guide).</div>
+</div>
+    
+<div>
+    <h3 id="pweight">pweight </h3>
+        <div>Population size weight (must be combined with dweight or pspwght)</div>
+        <div class="variable-meta-string"> Location in questionnaire: R19</div>
+</div>
+    
+<div>
+    <h3 id="anweight">anweight </h3>
+        <div>Analysis weight</div>
+        <div class="variable-meta-string"> Note: It is recommended that by default you should always use anweight (analysis weight) as a weight in all analysis. This weight is suitable for all types of analysis, including when you are studying just one country, when you compare across countries, or when you are studying groups of countries. For more information, please see the document "Weighting ESS data (User guide).</div>
+</div>
+    
+<div>
+    <h3 id="polintr">polintr </h3>
+        <div>How interested in politics</div>
+        <div class="variable-meta-string"> How interested would you say you are in politics - are you...</div>
+        <div class="variable-meta-string"> READ OUT...</div>
+        <div class="variable-meta-string"> Location in questionnaire: B1</div>
+        <div class="variable-meta-string"> Note: INTRODUCTION TO QUESTIONS B1-37: Now we want to ask a few questions about politics and government</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very interested</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Quite interested</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Hardly interested</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Not at all interested</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="trstplt">trstplt </h3>
+        <div>Trust in politicians</div>
+        <div class="variable-meta-string"> CARD 9</div>
+        <div class="variable-meta-string"> Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. Firstly... ...politicians?</div>
+        <div class="variable-meta-string"> READ OUT...</div>
+        <div class="variable-meta-string"> Location in questionnaire: B6-12</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>No trust at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Complete trust</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="trstprl">trstprl </h3>
+        <div>Trust in country's parliament</div>
+        <div class="variable-meta-string"> CARD 9</div>
+        <div class="variable-meta-string"> Using this card, please tell me on a score of 0-10 how much you personally trust each of the institutions I read out. 0 means you do not trust an institution at all, and 10 means you have complete trust. Firstly... ...[country]'s parliament?</div>
+        <div class="variable-meta-string"> READ OUT...</div>
+        <div class="variable-meta-string"> Location in questionnaire: B6-12</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>No trust at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Complete trust</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="sgnptit">sgnptit </h3>
+        <div>Signed petition last 12 months</div>
+        <div class="variable-meta-string"> ASK ALL</div>
+        <div class="variable-meta-string"> There are different ways of trying to improve things in [country] or help prevent things from going wrong. During the last 12 months, have you done any of the following? Have you... ...signed a petition?</div>
+        <div class="variable-meta-string"> READ OUT</div>
+        <div class="variable-meta-string"> Location in questionnaire: B15-22</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="pbldmn">pbldmn </h3>
+        <div>Taken part in lawful public demonstration last 12 months</div>
+        <div class="variable-meta-string"> ASK ALL</div>
+        <div class="variable-meta-string"> There are different ways of trying to improve things in [country] or help prevent things from going wrong. During the last 12 months, have you done any of the following? Have you... ...taken part in a lawful public demonstration?</div>
+        <div class="variable-meta-string"> READ OUT</div>
+        <div class="variable-meta-string"> Location in questionnaire: B15-22</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="bctprd">bctprd </h3>
+        <div>Boycotted certain products last 12 months</div>
+        <div class="variable-meta-string"> ASK ALL</div>
+        <div class="variable-meta-string"> There are different ways of trying to improve things in [country] or help prevent things from going wrong. During the last 12 months, have you done any of the following? Have you... ...boycotted certain products?</div>
+        <div class="variable-meta-string"> READ OUT</div>
+        <div class="variable-meta-string"> Location in questionnaire: B15-22</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="lrscale">lrscale </h3>
+        <div>Placement on left right scale</div>
+        <div class="variable-meta-string"> ASK ALL CARD 10</div>
+        <div class="variable-meta-string"> In politics people sometimes talk of 'left' and 'right'. Using this card, where would you place yourself on this scale, where 0 means the left and 10 means the right?</div>
+        <div class="variable-meta-string"> Location in questionnaire: B26</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Left</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Right</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="eneffap">eneffap </h3>
+        <div>How likely to buy most energy efficient home appliance</div>
+        <div class="variable-meta-string"> ASK ALL CARD 32</div>
+        <div class="variable-meta-string"> If you were to buy a large electrical appliance for your home, how likely is it that you would buy one of the most energy efficient ones?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D1</div>
+        <div class="variable-meta-string"> Note: INTRODUCTION TO QUESTIONS D1-32: Now some questions on a different topic.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Extremely likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="rdcenr">rdcenr </h3>
+        <div>How often do things to reduce energy use</div>
+        <div class="variable-meta-string"> CARD 33</div>
+        <div class="variable-meta-string"> There are some things that can be done to reduce energy use, such as switching off appliances that are not being used, walking for short journeys, or only using the heating or air conditioning when really needed. In your daily life, how often do you do things to reduce your energy use?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D2</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Never</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Hardly ever</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Sometimes</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Often</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Very often</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Always</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>Cannot reduce energy use</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="cflsenr">cflsenr </h3>
+        <div>How confident you could use less energy than now</div>
+        <div class="variable-meta-string"> CARD 34</div>
+        <div class="variable-meta-string"> Overall, how confident are you that you could use less energy than you do now?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D3</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all confident</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Completely confident</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elgcoal">elgcoal </h3>
+        <div>How much electricity in [country] should be generated from coal</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? First, how much of the electricity used in [country] should be generated from coal?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elgngas">elgngas </h3>
+        <div>How much electricity in [country] should be generated from natural gas</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? And how about natural gas?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elghydr">elghydr </h3>
+        <div>How much electricity in [country] should be generated from hydroelectric power</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? And how about hydroelectric power generated by flowing water from rivers, dams and seas?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elgnuc">elgnuc </h3>
+        <div>How much electricity in [country] should be generated from nuclear power</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? How much of the electricity used in [country] should be generated by nuclear power?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elgsun">elgsun </h3>
+        <div>How much electricity in [country] should be generated from solar power</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? And how about sun or solar power?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elgwind">elgwind </h3>
+        <div>How much electricity in [country] should be generated from wind power</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? And how about wind power?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="elgbio">elgbio </h3>
+        <div>How much electricity in [country] should be generated from biomass energy</div>
+        <div class="variable-meta-string"> CARD 35</div>
+        <div class="variable-meta-string"> The highlighted box at the top of this card shows a number of energy sources that can be used to generate electricity. Please take a moment to look over them. How much of the electricity used in [country] should be generated from each energy source? And how about biomass energy generated from materials like, wood, plants and animal waste?</div>
+        <div class="variable-meta-string"> INTERVIEWER: PAUSE TO ALLOW RESPONDENT TO READ THE LIST. Please choose your answer from the options at the bottom of this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D4-10</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A very large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>A large amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>A medium amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A small amount</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>None at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I have not heard of this energy source before</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrpwrct">wrpwrct </h3>
+        <div>How worried, power cuts</div>
+        <div class="variable-meta-string"> CARD 36</div>
+        <div class="variable-meta-string"> How worried are you that there may be power cuts in [country]?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D11</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrenexp">wrenexp </h3>
+        <div>How worried, energy too expensive for many people</div>
+        <div class="variable-meta-string"> The next few questions are about energy people use at home for things such as heating, lighting, cooking and electrical appliances. STILL CARD 36</div>
+        <div class="variable-meta-string"> How worried are you that energy may be too expensive for many people in [country]?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D12</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrdpimp">wrdpimp </h3>
+        <div>How worried, [country] too dependent on energy imports</div>
+        <div class="variable-meta-string"> STILL CARD 36</div>
+        <div class="variable-meta-string"> How worried are you about [country] being too dependent on energy imports from other countries?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D13</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrdpfos">wrdpfos </h3>
+        <div>How worried, [country] too dependent on fossil fuels</div>
+        <div class="variable-meta-string"> STILL CARD 36</div>
+        <div class="variable-meta-string"> How worried are you about [country] being too dependent on using energy generated by fossil fuels such as oil, gas and coal?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D14</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrntdis">wrntdis </h3>
+        <div>How worried, energy supply interrupted by natural disasters or extreme weather</div>
+        <div class="variable-meta-string"> STILL CARD 36</div>
+        <div class="variable-meta-string"> How worried are you that energy supplies could be interrupted... ...by natural disasters or extreme weather?</div>
+        <div class="variable-meta-string"> READ OUT...</div>
+        <div class="variable-meta-string"> Location in questionnaire: D15-17</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrinspw">wrinspw </h3>
+        <div>How worried, energy supply interrupted by insufficient power generated</div>
+        <div class="variable-meta-string"> STILL CARD 36</div>
+        <div class="variable-meta-string"> How worried are you that energy supplies could be interrupted? ...and by insufficient power being generated?</div>
+        <div class="variable-meta-string"> READ OUT...</div>
+        <div class="variable-meta-string"> Location in questionnaire: D15-17</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrtcfl">wrtcfl </h3>
+        <div>How worried, energy supply interrupted by technical failures</div>
+        <div class="variable-meta-string"> STILL CARD 36</div>
+        <div class="variable-meta-string"> How worried are you that energy supplies could be interrupted? ...and by technical failures?</div>
+        <div class="variable-meta-string"> READ OUT...</div>
+        <div class="variable-meta-string"> Location in questionnaire: D15-17</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrtratc">wrtratc </h3>
+        <div>How worried, energy supply interrupted by terrorist attacks</div>
+        <div class="variable-meta-string"> STILL CARD 36</div>
+        <div class="variable-meta-string"> And how worried are you that energy supplies could be interrupted by terrorist attacks?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D18</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="clmchng">clmchng </h3>
+        <div>Do you think world's climate is changing</div>
+        <div class="variable-meta-string"> CARD 37</div>
+        <div class="variable-meta-string"> You may have heard the idea that the world's climate is changing due to increases in temperature over the past 100 years. What is your personal opinion on this? Do you think the world's climate is changing?</div>
+        <div class="variable-meta-string"> Choose your answer from this card.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D19</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Definitely changing</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Probably changing</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Probably not changing</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Definitely not changing</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="clmthgt1">clmthgt1 </h3>
+        <div>How much thought about climate change before today</div>
+        <div class="variable-meta-string"> ASK IF DEFINITELY NOT CHANGING AT D19 (code 4) CARD 38</div>
+        <div class="variable-meta-string"> How much have you thought about climate change before today?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D20</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Very little</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Some</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A lot</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>A great deal</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="clmthgt2">clmthgt2 </h3>
+        <div>How much thought about climate change before today</div>
+        <div class="variable-meta-string"> CARD 38</div>
+        <div class="variable-meta-string"> How much have you thought about climate change before today?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D21</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Very little</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Some</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A lot</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>A great deal</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ccnthum">ccnthum </h3>
+        <div>Climate change caused by natural processes, human activity, or both</div>
+        <div class="variable-meta-string"> CARD 39</div>
+        <div class="variable-meta-string"> Do you think that climate change is caused by natural processes, human activity, or both?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D22</div>
+        <div class="variable-meta-string"> Note: France: Due to CAPI error information is missing for 1 respondent. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Entirely by natural processes</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Mainly by natural processes</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>About equally by natural processes and human activity</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Mainly by human activity</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Entirely by human activity</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>I don't think climate change is happening</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ccrdprs">ccrdprs </h3>
+        <div>To what extent feel personal responsibility to reduce climate change</div>
+        <div class="variable-meta-string"> CARD 40</div>
+        <div class="variable-meta-string"> To what extent do you feel a personal responsibility to try to reduce climate change?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D23</div>
+        <div class="variable-meta-string"> Note: France: Due to CAPI error information is missing for 1 respondent. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>A great deal</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="wrclmch">wrclmch </h3>
+        <div>How worried about climate change</div>
+        <div class="variable-meta-string"> CARD 41</div>
+        <div class="variable-meta-string"> How worried are you about climate change?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D24</div>
+        <div class="variable-meta-string"> Note: France: Due to CAPI error information is missing for 1 respondent. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Not at all worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Not very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Extremely worried</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ccgdbd">ccgdbd </h3>
+        <div>Climate change good or bad impact across world</div>
+        <div class="variable-meta-string"> CARD 42</div>
+        <div class="variable-meta-string"> How good or bad do you think the impact of climate change will be on people across the world? Please choose a number from 0 to 10, where 0 is extremely bad and 10 is extremely good.</div>
+        <div class="variable-meta-string"> Location in questionnaire: D25</div>
+        <div class="variable-meta-string"> Note: France: Due to CAPI error information is missing for 1 respondent. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Extremely bad</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Extremely good</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="lkredcc">lkredcc </h3>
+        <div>Imagine large numbers of people limit energy use, how likely reduce climate change</div>
+        <div class="variable-meta-string"> CARD 43</div>
+        <div class="variable-meta-string"> Now imagine that large numbers of people limited their energy use. How likely do you think it is that this would reduce climate change?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D26</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Extremely likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="lklmten">lklmten </h3>
+        <div>How likely, large numbers of people limit energy use</div>
+        <div class="variable-meta-string"> STILL CARD 43</div>
+        <div class="variable-meta-string"> How likely do you think it is that large numbers of people will limit their energy use to try to reduce climate change?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D27</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Extremely likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="gvsrdcc">gvsrdcc </h3>
+        <div>How likely, governments in enough countries take action to reduce climate change</div>
+        <div class="variable-meta-string"> STILL CARD 43</div>
+        <div class="variable-meta-string"> And how likely do you think it is that governments in enough countries will take action that reduces climate change?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D28</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Extremely likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ownrdcc">ownrdcc </h3>
+        <div>How likely, limiting own energy use reduce climate change</div>
+        <div class="variable-meta-string"> STILL CARD 43</div>
+        <div class="variable-meta-string"> How likely do you think it is that limiting your own energy use would help reduce climate change?</div>
+        <div class="variable-meta-string"> Location in questionnaire: D29</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not at all likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">10</td>
+                        <td>Extremely likely</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="inctxff">inctxff </h3>
+        <div>Favour increase taxes on fossil fuels to reduce climate change</div>
+        <div class="variable-meta-string"> ASK ALL CARD 44</div>
+        <div class="variable-meta-string"> To what extent are you in favour or against the following policies in [country] to reduce climate change? Increasing taxes on fossil fuels, such as oil, gas and coal.</div>
+        <div class="variable-meta-string"> READ OUT EACH STATEMENT AND CODE IN GRID</div>
+        <div class="variable-meta-string"> Location in questionnaire: D30-32</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Strongly in favour</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Somewhat in favour</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Neither in favour nor against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Somewhat against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Strongly against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="sbsrnen">sbsrnen </h3>
+        <div>Favour subsidise renewable energy to reduce climate change</div>
+        <div class="variable-meta-string"> ASK ALL CARD 44</div>
+        <div class="variable-meta-string"> To what extent are you in favour or against the following policies in [country] to reduce climate change? Using public money to subsidise renewable energy such as wind and solar power.</div>
+        <div class="variable-meta-string"> READ OUT EACH STATEMENT AND CODE IN GRID</div>
+        <div class="variable-meta-string"> Location in questionnaire: D30-32</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Strongly in favour</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Somewhat in favour</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Neither in favour nor against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Somewhat against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Strongly against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="banhhap">banhhap </h3>
+        <div>Favour ban sale of least energy efficient household appliances to reduce climate change</div>
+        <div class="variable-meta-string"> ASK ALL CARD 44</div>
+        <div class="variable-meta-string"> To what extent are you in favour or against the following policies in [country] to reduce climate change? A law banning the sale of the least energy efficient household appliances.</div>
+        <div class="variable-meta-string"> READ OUT EACH STATEMENT AND CODE IN GRID</div>
+        <div class="variable-meta-string"> Location in questionnaire: D30-32</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Strongly in favour</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Somewhat in favour</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Neither in favour nor against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Somewhat against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Strongly against</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="gndr">gndr </h3>
+        <div>Gender</div>
+        <div class="variable-meta-string"> CODE SEX, respondent</div>
+        <div class="variable-meta-string"> Location in questionnaire: F21</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Female</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="agea">agea </h3>
+        <div>Age of respondent, calculated</div>
+        <div class="variable-meta-string"> Location in questionnaire: F31b</div>
+        <div class="variable-meta-string"> Note: Sweden: For anonymity reasons, all respondents over 90 years of age are recorded to be 90 years old.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">999</td>
+                        <td>Not available*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="domicil">domicil </h3>
+        <div>Domicile, respondent's description</div>
+        <div class="variable-meta-string"> ASK ALL CARD 61</div>
+        <div class="variable-meta-string"> Which phrase on this card best describes the area where you live?</div>
+        <div class="variable-meta-string"> Location in questionnaire: F14</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>A big city</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Suburbs or outskirts of big city</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Town or small city</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Country village</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Farm or home in countryside</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="eisced">eisced </h3>
+        <div>Highest level of education, ES - ISCED</div>
+        <div class="variable-meta-string"> Generated variable: Highest level of education, ES - ISCED</div>
+        <div class="variable-meta-string"> Location in questionnaire: F15</div>
+        <div class="variable-meta-string"> Note: European survey version of ISCED. Recoded from the ESS harmonised variable EDULVLB. For further details, please see ESS8-2016 Documentation Report, Appendix A1 Education. Germany, Israel, Slovenia: The underlying country-specific questionnaire item has changed since ESS7-2014.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">0</td>
+                        <td>Not possible to harmonise into ES-ISCED</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>ES-ISCED I , less than lower secondary</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>ES-ISCED II, lower secondary</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>ES-ISCED IIIb, lower tier upper secondary</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>ES-ISCED IIIa, upper tier upper secondary</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>ES-ISCED IV, advanced vocational, sub-degree</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>ES-ISCED V1, lower tertiary education, BA level</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>ES-ISCED V2, higher tertiary education, >= MA level</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">55</td>
+                        <td>Other</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="eduyrs">eduyrs </h3>
+        <div>Years of full-time education completed</div>
+        <div class="variable-meta-string"> ASK ALL</div>
+        <div class="variable-meta-string"> About how many years of education have you completed, whether full-time or part-time? Please report these in full-time equivalents and include compulsory years of schooling.</div>
+        <div class="variable-meta-string"> INTERVIEWER NOTE: round answer up or down to the nearest whole year. WRITE IN: ..</div>
+        <div class="variable-meta-string"> Location in questionnaire: F16</div>
+        <div class="variable-meta-string"> Note: Estonia: For anonymity reasons a few substantial responses have been recoded to missing value (99 'No answer') by the national team. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="mnactic">mnactic </h3>
+        <div>Main activity, last 7 days. All respondents. Post coded</div>
+        <div class="variable-meta-string"> POST CODE: MAIN ACTIVITY</div>
+        <div class="variable-meta-string"> Location in questionnaire: F17c2</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Paid work</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Education</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Unemployed, looking for job</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Unemployed, not looking for job</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Permanently sick or disabled</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Retired</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Community or military service</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Housework, looking after children, others</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>Other</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">66</td>
+                        <td>Not applicable*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">77</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">88</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">99</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="hincfel">hincfel </h3>
+        <div>Feeling about household's income nowadays</div>
+        <div class="variable-meta-string"> CARD 68</div>
+        <div class="variable-meta-string"> Which of the descriptions on this card comes closest to how you feel about your household's income nowadays?</div>
+        <div class="variable-meta-string"> Location in questionnaire: F42</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Living comfortably on present income</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Coping on present income</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Difficult on present income</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>Very difficult on present income</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipcrtiv">ipcrtiv </h3>
+        <div>Important to think new ideas and being creative</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. Thinking up new ideas and being creative is important to her/him. She/he likes to do things in her/his own original way.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="imprich">imprich </h3>
+        <div>Important to be rich, have money and expensive things</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to be rich. She/he wants to have a lot of money and expensive things.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipeqopt">ipeqopt </h3>
+        <div>Important that people are treated equally and have equal opportunities</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. She/he thinks it is important that every person in the world should be treated equally. She/he believes everyone should have equal opportunities in life.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipshabt">ipshabt </h3>
+        <div>Important to show abilities and be admired</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It's important to her/him to show her/his abilities. She/he wants people to admire what she/he does.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="impsafe">impsafe </h3>
+        <div>Important to live in secure and safe surroundings</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to live in secure surroundings. She/he avoids anything that might endanger her/his safety.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="impdiff">impdiff </h3>
+        <div>Important to try new and different things in life</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. She/he likes surprises and is always looking for new things to do. She/he thinks it is important to do lots of different things in life.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipfrule">ipfrule </h3>
+        <div>Important to do what is told and follow rules</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. She/he believes that people should do what they're told. She/he thinks people should follow rules at all times, even when no-one is watching.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipudrst">ipudrst </h3>
+        <div>Important to understand different people</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to listen to people who are different from her/him. Even when she/he disagrees with them, she/he still wants to understand them.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipmodst">ipmodst </h3>
+        <div>Important to be humble and modest, not draw attention</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to be humble and modest. She/he tries not to draw attention to herself/himself.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipgdtim">ipgdtim </h3>
+        <div>Important to have a good time</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. Having a good time is important to her/him. She/he likes to 'spoil' herself/himself.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="impfree">impfree </h3>
+        <div>Important to make own decisions and be free</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to make her/his own decisions about what she/he does. She/he likes to be free and not depend on others.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="iphlppl">iphlppl </h3>
+        <div>Important to help people and care for others well-being</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It's very important to her/him to help the people around her/him. She/he wants to care for their well-being.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipsuces">ipsuces </h3>
+        <div>Important to be successful and that people recognize achievements</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. Being very successful is important to her/him. She/he hopes people will recognise her/his achievements.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipstrgv">ipstrgv </h3>
+        <div>Important that government is strong and ensures safety</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him that the government ensures her/his safety against all threats. She/he wants the state to be strong so it can defend its citizens.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipadvnt">ipadvnt </h3>
+        <div>Important to seek adventures and have an exciting life</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. She/he looks for adventures and likes to take risks. She/he wants to have an exciting life.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="ipbhprp">ipbhprp </h3>
+        <div>Important to behave properly</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him always to behave properly. She/he wants to avoid doing anything people would say is wrong.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="iprspot">iprspot </h3>
+        <div>Important to get respect from others</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to get respect from others. She/he wants people to do what she/he says.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="iplylfr">iplylfr </h3>
+        <div>Important to be loyal to friends and devote to people close</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. It is important to her/him to be loyal to her/his friends. She/he wants to devote herself/himself to people close to her/him.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="impenv">impenv </h3>
+        <div>Important to care for nature and environment</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. She/he strongly believes that people should care for nature. Looking after the environment is important to her/him.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="imptrad">imptrad </h3>
+        <div>Important to follow traditions and customs</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. Tradition is important to her/him. She/he tries to follow the customs handed down by her/his religion or her/his family.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+    
+<div>
+    <h3 id="impfun">impfun </h3>
+        <div>Important to seek fun and things that give pleasure</div>
+        <div class="variable-meta-string"> Now I will briefly describe some people. Please listen to each description and tell me how much each person is or is not like you. Use this card for your answer. She/he seeks every chance she/he can to have fun. It is important to her/him to do things that give her/him pleasure.</div>
+        <div class="variable-meta-string"> Location in questionnaire: Ha-u</div>
+        <div class="variable-meta-string"> Note: Iceland: Data for question Ha (IPCRTIV) through Hu (IMPFUN) is missing ('No answer') for 28 interviews due to poor interview quality. For further details, please see item 46 in the Country Reports in the ESS8-2016 Documentation Report.</div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody class="codelist">
+                    <tr>
+                        <td class="nowrap">1</td>
+                        <td>Very much like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">2</td>
+                        <td>Like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">3</td>
+                        <td>Somewhat like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">4</td>
+                        <td>A little like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">5</td>
+                        <td>Not like me</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">6</td>
+                        <td>Not like me at all</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">7</td>
+                        <td>Refusal*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">8</td>
+                        <td>Don't know*</td>
+                    </tr>
+                    <tr>
+                        <td class="nowrap">9</td>
+                        <td>No answer*</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+                <span> *) Missing value</span>
+            </p>
+        </div>
+</div>
+</body>
+
+</html>
